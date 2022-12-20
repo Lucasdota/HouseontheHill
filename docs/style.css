@@ -1,22 +1,26 @@
 /*variable colors to change from day to night when resizing browser window*/
 :root{
     --ground: #B4F8C8;
-    --ground-border: #523A28;
+    --border: rgba(0, 0, 0, 0.164);
     --trunk:#A47551;
     --leaves:#18A558;
     --plate:#BDC3CB;
     --bodywork:#EFE7BC;
-    --car-window:#E7F2F8;
+    --car-window:#F9F6F0;
     --front:#B6E2D3;
     --house-door:#A47551;
-    --house-window:#FBE7C6;
-    --ceiling:#D8A7B1;
-    --fence:#FFAEBC;
+    --house-window:#F9F6F0;
+    --ceiling:#6F5B3E;
+    --mailbox:#F9F6F0;
     --cloud:#A0E7E5;
+    --sun:#FBE698;
+    --sunlight:#F9EAC2;
+    --sky:#DBF5F0;
 }
 
 
 
+/*add all margin and padding to the total sum of its elements*/
 *{
     box-sizing: border-box;
 }
@@ -25,15 +29,25 @@
 
 body{
     margin:0;
+    background: radial-gradient(
+        closest-corner circle at 15% 15%,
+        var(--sun),
+        var(--sun) 20%,
+        var(--sunlight) 21%,
+        var(--sky) 100%
+      );
+    height:100vh;
 }
 
 
 
 main{ 
-    width:10vw;
-    height:100vh;  
+    width:100%;
+    height:100%; 
+    overflow:hidden; /*hid any unnecessary scrollbar*/
     display:flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 
@@ -42,101 +56,163 @@ main{
     width:100%;
     height:10%;
     background-color: var(--ground);
-    border-top:1% solid var(--ground-border);
+    border:1px solid var(--border);
+    margin:0;
 }
 
 
 
 .above-ground{
-    width:90%;
-    height:30%;
-    align-self: center;   
+    width:98%;
+    height:48%;
+    margin:0 auto;
+    display:flex;  
+    justify-content: space-around;
+    align-items: flex-end;
 }
 
 
 
 .tree{
-    width:10%;
+    width:12%;
     height:90%;
     display:flex;
     flex-direction:column-reverse;
+    align-items: center;
 }
 .trunk{
-    width:30%;
+    width:20%;
     height:60%;
     background-color: var(--trunk);
+    border:1px solid var(--border);
 }
 .leaves{
-    width:95%;
+    width:100%;
     height:40%;
     background-color: var(--leaves);
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:20px;
+    border-bottom-left-radius:20px;
+    border:1px solid var(--border);
 }
 .leaves1{
-    width:15%;
-    height:15%;
+    width:50%;
+    height:25%;
+    margin-left:25%;
+    margin-top:-5%;
     background-color: var(--leaves);
     border-radius: 100px;
+
 }
 .leaves2{
     width:15%;
-    height:15%;
+    height:70%;
+    margin-left:-5%;
     background-color: var(--leaves);
     border-radius: 100px;
+    display: inline-block;
 }
 .leaves3{
     width:15%;
-    height:15%;
+    height:70%;
+    margin-right:-5%;
     background-color: var(--leaves);
     border-radius: 100px;
+    float:right;
 }
 
 
 
 .car{
-    width:30%;
-    height:25%;
+    width:20%;
+    height:30%;
     display:flex;
     flex-direction:column-reverse;
+    align-items: center;
+    border-collapse: collapse;
 }
 .wheels{
     width:80%;
-    height:10%;
+    height:35%;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap:30%;
 }
 .wheel{
-    width:10%;
-    height:100%;
-    background-color: rgb(58, 57, 57);
+    width:15%;
+    height:135%;
+    margin-top:-3%;
+    background-color: rgb(95, 94, 94);
+    border:1px solid var(--border);
+    border-radius: 100px;
 }
 .plate{
-    width:80%;
-    height:80%;
+    width:60%;
+    height:60%;
     border-radius:100px;
     background-color: var(--plate);
+    border:1px solid var(--border);
+    margin:20% auto;
 }
 .bodywork{
     width:100%;
-    height:60%;
+    height:65%;
+    margin-bottom:-2%;
     background-color: var(--bodywork);
+    border:1px solid var(--border);
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 5px;
 }
 .car-door{
-    width:30%;
+    width:25%;
     height:100%;
+    margin-left:2%;
     background-color: var(--bodywork);
-    border:1px solid black;
+    border:1px solid var(--border);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.car-door:first-of-type{
+    margin-left:22%;
+    border-bottom-left-radius: 20px;
+}
+.car-door:last-of-type{
+    border-bottom-right-radius: 10px;
+}
+.car-handle{
+    width:15%;
+    height:5%;
+    margin-bottom:30%;
+    margin-right:5%;
+    background-color: gray;
 }
 .car-windows{
     width:60%;
-    height:30%;
+    height:40%;
     background-color: var(--bodywork);
+    border:1px solid var(--border);
     display:flex;
-    justify-content: center;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 .car-window{
     width:40%;
-    height:90%;
+    height:80%;
+    margin-left:5%;
+    margin-top:1%;
     background-color: var(--car-window);  
+    border:1px solid var(--border);
+}
+.car-window:last-of-type{
+    border-top-right-radius: 25px;
+}
+.car-window:first-of-type{
+    border-top-left-radius: 25px;
 }
 
 
@@ -151,36 +227,69 @@ main{
     width:100%;
     height:70%;
     background-color: var(--front);
+    border:1px solid var(--border);
     display:flex;
+    justify-content: space-around;
+    align-items: flex-end;
 }
 .house-door{
     width:10%;
-    height:60%;
+    height:50%;
+    margin-right:10%;
     background-color: var(--house-door);
+    border:1px solid var(--border);  
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;  
+}
+.door-handle{
+    width:10%;
+    height:8%;
+    margin-right:10%;
+    border-radius:30px;
+    background-color: #EFE7BC;
 }
 .house-window{
     width:15%;
     height:30%;
+    border:1px solid var(--border);
+    align-self: center;
+    display: flex;
+    flex-flow:row wrap;
 }
 .hw{
     width:50%;
     height:50%;
     background-color: var(--house-window);
+    border:1px solid var(--border);
 }
 .ceiling{
-    border-bottom:5vh solid var(--ceiling);
-    border-right:5vw solid transparent;
-    border-left:5vw solid transparent;
+    border-bottom:10vh solid var(--ceiling);
+    border-right:23vw solid transparent;
+    border-left:22vw solid transparent;
 }
 
 
 
-.fence{
+.mailbox{
     width:5%;
     height:25%;
-    background-color: var(--fence);
-    border-top-left-radius: 100px;
-    border-top-left-radius: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.mailbox-body{
+    width:10%;
+    height:80%;
+    background-color: var(--mailbox);
+    border:1px solid var(--border);
+}
+.mailbox-head{
+    width:80%;
+    height:20%;
+    background-color: var(--mailbox);
+    border:1px solid var(--border);
+    border-top-left-radius: 20px;
 }
 
 
@@ -188,17 +297,23 @@ main{
 .bird{
     width:3%;
     height:3%;
-    background-color: black;
 }
 .p1{
-    margin-left:15%;
+    margin-left:25%;
+    filter:invert(50%);/*gray tune*/
+    transform: scaleX(1.2);/*slightly bigger*/
 }
 .p2{
-    margin-left:17%;
+    margin-left:27%;
+    filter:invert(50%);
+    transform: scaleX(-1);/*flip horizontally*/
 }
 .p3{
-    margin-left:13%;
-    margin-top:40%;
+    margin-left:23%;
+    filter:invert(50%);
+}
+img{
+    width:80%;
 }
 
 
@@ -206,8 +321,11 @@ main{
 .cloud1{
     width:30%;
     height:10%;
+    margin-left:40%;
+    margin-top:5%;
     display:flex;
     flex-direction: column-reverse;
+    align-items: center;
 }
 .c1a{
     width:100%;
@@ -216,16 +334,20 @@ main{
     background-color: var(--cloud);
 }
 .c1b{
-    width:40%;
+    width:80%;
     height:20%;
-    border-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
     background-color: var(--cloud);
+    display:inline-block;
 }
 .c1c{
     width:35%;
     height:30%;
-    border-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
     background-color: var(--cloud);
+    display:inline-block;
 }
 
 
@@ -233,6 +355,8 @@ main{
 .cloud2{
     width:45%;
     height:7%;
+    margin-left:50%;
+    margin-top:3%;
     display:flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -246,6 +370,50 @@ main{
 .c2b{
     width:80%;
     height:20%;
-    border-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
     background-color: var(--cloud);
+}
+
+
+/*change to night mode under 1000px*/
+@media all and (max-width:1000px){
+    :root{
+        --ground:#171515;
+        --border: #171515;
+        --trunk:#171515;
+        --leaves:#171515;
+        --plate:#171515;
+        --bodywork:#171515;
+        --car-window:rgba(68, 68, 85, 0.178);
+        --front:#171515;
+        --house-door:#171515;
+        --house-window:#FBE7C6;
+        --ceiling:#171515;
+        --mailbox:#171515;
+        --cloud:#171515;
+        --sun:#ccc;
+        --sunlight:#445;
+        --sky:#223; 
+    }
+
+
+
+    .wheel{
+        background-color: #171515;
+    }
+    .car-handle{
+        background-color: #171515;
+    }
+
+    .house-door{
+        border-bottom:1px solid #fbe7c61f;
+        box-shadow:0px 10px 10px -5px #FBE7C6;/*behind door light effect*/
+    }
+    .door-handle{
+        background-color: #171515;
+    }
+    .house-window{
+        box-shadow:1px 1px 25px #FBE7C6;/*light shadow on windows effect*/
+    }
 }
